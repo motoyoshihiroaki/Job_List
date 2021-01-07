@@ -1,3 +1,14 @@
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+import slackweb
+
+SLACK_COCO = os.environ.get("SLACK_COCO")
+SLACK_LANCERS = os.environ.get("SLACK_LANCERS")
+SLACK_CLOWDWORKS = os.environ.get("SLACK_CLOWDWORKS")
+
+LINE_TOKEN = os.environ.get("LINE_TOKEN")
+
 # Lancers カテゴリー名
 CAT_NAME = [
     """カテゴリの種類

@@ -12,10 +12,10 @@ import slackweb
 import settings
 
 
-slack_coco = slackweb.Slack(url="https://hooks.slack.com/services/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")
-slack_lancers = slackweb.Slack(url="https://hooks.slack.com/services/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")
-slack_clowdworks = slackweb.Slack(url="https://hooks.slack.com/services/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")
-
+# .envファイルに記述
+slack_coco = slackweb.Slack(url = settings.SLACK_COCO)
+slack_lancers = slackweb.Slack(url = settings.SLACK_LANCERS)
+slack_clowdworks = slackweb.Slack(url = settings.SLACK_CLOWDWORKS)
 
 ua = UserAgent()
 useragent = ua.random
@@ -24,7 +24,7 @@ now = datetime.datetime.now()
 # LINEに通知する関数
 def line_notice(mess):
     url = "https://notify-api.line.me/api/notify"
-    token = 'RUdZWDWIUAKhqK3kspEJucVol3sLtLQpyRn52hiRavc'
+    token = settings.LINE_TOKEN
     headers = {"Authorization" : "Bearer "+ token}
     payload = {"message": "Clouds" + "\n" + now.strftime("%H時%M分 Error") + "\n"*2 + str(mess)}
     requests.post(url ,headers = headers ,params=payload)
